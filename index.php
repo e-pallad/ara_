@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARA Thurau - Dokumententitel</title>
+    <title>ARA Thurau - Dokumententitel v1</title>
   </head>
   <style>
     body {font-family: Arial, Calibri, sans-serif; font-size: 21px;}
