@@ -36,6 +36,8 @@
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
         $sqlFileName = $project."-".$order."-".$version."-".$classification."-".$add_text;
 
+        $insertData = "INSERT INTO ara_ (project, order, version, classification, add_text, filename) VALUES ('123', 100, 1, 'AB', '123Test', 'filename123')";
+/*
         $insertData = "INSERT INTO ara_ (
           project,
           order,
@@ -51,7 +53,7 @@
           '$add_text',
           '$sqlFileName'
         )";
-
+*/
         $conn->query($insertData);
 
         if ($conn->connect_errno || $conn->error) {
