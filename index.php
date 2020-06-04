@@ -36,7 +36,7 @@
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
         $sqlFileName = $project."-".$order."-".$version."-".$classification."-".$add_text;
 
-        $insertid = "INSERT INTO ara_ (
+        $insertData = "INSERT INTO 'ara_' (
           project,
           order,
           version,
@@ -52,7 +52,7 @@
           '$sqlFileName'
         )";
 
-        $conn->query($insertid);
+        $conn->query($insertData);
 
         if ($conn->connect_errno) {
           $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno;
