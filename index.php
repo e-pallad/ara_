@@ -27,11 +27,6 @@
 
       $conn = new mysqli($servername, $username, $password, $dbname);
 
-      if (!$conn) {
-        $errorMessage = "Connection failed: " . mysqli_connect_error();
-        exit;
-      }
-
       $message = "";
       if(isset($_POST['submit'])) {
         $project = mysqli_real_escape_string($conn, $_POST['project']);
@@ -40,8 +35,6 @@
         $classification = mysqli_real_escape_string($conn, $_POST['classification']);
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
         $sqlFileName = $project."-".$order."-".$version."-".$classification."-".$add_text;
-
-        $insertData = "INSERT INTO ara_ (project, order, version, classification, add_text, filename) VALUES ('123', 100, 1, 'AB', '123Test', 'filename123')";
 /*
         $insertData = "INSERT INTO ara_ (
           project,
@@ -58,8 +51,11 @@
           '$add_text',
           '$sqlFileName'
         )";
-*/
+
         $conn->query($insertData);
+
+*/
+        $conn->query("INSERT INTO ara_ (project, order, version, classification, add_text, filename) VALUES ('123', 100, 1, 'AB', '123Test', 'filename123')");
 
         if ($conn->connect_errno || $conn->error) {
           $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno . " " . $conn->error;
