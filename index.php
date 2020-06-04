@@ -30,22 +30,23 @@
       $message = "";
       if(isset($_POST['submit'])) {
         $project = mysqli_real_escape_string($conn, $_POST['project']);
-        $order = mysqli_real_escape_string($conn, $_POST['order']);
+        $orderNum = mysqli_real_escape_string($conn, $_POST['orderNum']);
         $version = str_pad(mysqli_real_escape_string($conn, $_POST['version']), 2, '0', STR_PAD_LEFT);
         $classification = mysqli_real_escape_string($conn, $_POST['classification']);
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
-        $sqlFileName = $project."-".$order."-".$version."-".$classification."-".$add_text;
-/*
+        $sqlFileName = $project."-".$orderNum."-".$version."-".$classification."-".$add_text;
+
+
         $insertData = "INSERT INTO ara_ (
           project,
-          order,
+          orderNum,
           version,
           classification,
           add_text,
           filename
         ) VALUES (
           '$project',
-          '$order',
+          '$orderNum',
           '$version',
           '$classification',
           '$add_text',
@@ -54,13 +55,10 @@
 
         $conn->query($insertData);
 
-*/
-        $conn->query("INSERT INTO 'ara_' ('project', 'order', 'version', 'classification', 'add_text', 'filename') VALUES ('123', 100, 1, 'AB', '123Test', 'filename123')");
-
         if ($conn->connect_errno || $conn->error) {
           $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno . " " . $conn->error;
         } else {
-          $filename = $project."-".$order."-".$version."-".$classification."-".$add_text;
+          $filename = $project."-".$orderNum."-".$version."-".$classification."-".$add_text;
         }
       } elseif (isset($_POST['create-csv'])) {
         $selectall = "SELECT * FROM ara_";
@@ -81,14 +79,14 @@
 
 
           $file = fopen('php://memory', 'w');
-          $header = array("Timestamp", "Projekt", "Ordernummer", "Version", "Dokumentenart", "Freitext", "Dateiname");
+          $header = array("Timestamp", "Projekt", "orderNumnummer", "Version", "Dokumentenart", "Freitext", "Dateiname");
           fputcsv($file, $header, $delimiter);
 
           while ($row = $query->fetch_assoc()) {
             $rowdata = array(
               $row['timestamp'],
               $row['project'],
-              $row['order'],
+              $row['orderNum'],
               $row['version'],
               $row['classification'],
               convertToWindowsCharset($row['add_text']),
@@ -124,7 +122,7 @@
       <div class="form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
           <p>Projektbezeichnung: <input type="text" name="project" value="Linth" placeholder="Linth" readonly></p><br>
-          <p>Ordnernummer: <select name="order">
+          <p>Ordnernummer: <select name="orderNum">
             <?php
             $optionen = array(
               '101' => "101 - Grundlagen",
@@ -174,7 +172,7 @@
                 'EP' => "EP - Dokumente des Sitzungswesens",
                 'FA' => "FA - Dokumente über gesetzliche Auflagen",
                 'FB' => "FB - Normen und Richtlinien",
-                'FC' => "FC - Technische Spezifikations-/Anforderungsdokumente",
+                'FC' => "FC - Technische Spezifikations-/AnforderNumungsdokumente",
                 'FD' => "FD - Dimensionierungsdokumente",
                 'GA' => "GA - Funktionsübersichtsdokumente",
                 'GB' => "GB - Fliessschemata",
