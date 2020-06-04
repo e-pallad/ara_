@@ -120,7 +120,7 @@
       </div>
       <div class="form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-          <p>Projektbezeichnung: <input type="text" name="project" value="Linth" placeholder="Linth" readonly></p><br>
+          <p>Projektbezeichnung: <input type="text" name="project" value="ARA Thurau" placeholder="ARA Thurau" readonly></p><br>
           <p>Ordnernummer: <select name="orderNum" required>
             <?php
             $optionen = array(
