@@ -54,8 +54,8 @@
 
         $conn->query($insertData);
 
-        if ($conn->connect_errno) {
-          $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno;
+        if ($conn->connect_errno || $conn->error) {
+          $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno . " " . $conn->error;
         } else {
           $filename = $project."-".$order."-".$version."-".$classification."-".$add_text;
         }
