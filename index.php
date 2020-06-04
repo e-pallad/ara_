@@ -55,7 +55,7 @@
         $conn->query($insertData);
 
 */
-        $conn->query("INSERT INTO ara_ (project, order, version, classification, add_text, filename) VALUES ('123', 100, 1, 'AB', '123Test', 'filename123')");
+        $conn->query("INSERT INTO 'ara_' ('project', 'order', 'version', 'classification', 'add_text', 'filename') VALUES ('123', 100, 1, 'AB', '123Test', 'filename123')");
 
         if ($conn->connect_errno || $conn->error) {
           $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno . " " . $conn->error;
