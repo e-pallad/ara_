@@ -36,7 +36,6 @@
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
         $sqlFileName = $project."-".$orderNum."-".$version."-".$classification."-".$add_text;
 
-
         $insertData = "INSERT INTO ara_ (
           project,
           orderNum,
@@ -122,7 +121,7 @@
       <div class="form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
           <p>Projektbezeichnung: <input type="text" name="project" value="Linth" placeholder="Linth" readonly></p><br>
-          <p>Ordnernummer: <select name="orderNum">
+          <p>Ordnernummer: <select name="orderNum" required>
             <?php
             $optionen = array(
               '101' => "101 - Grundlagen",
