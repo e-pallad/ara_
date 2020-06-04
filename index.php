@@ -21,11 +21,16 @@
   <body>
     <?php
       $servername = "localhost";
-      $username = "tbf";
-      $password = "R8b%a4q2";
+      $username = "ara";
+      $password = "Wjl9g!56";
       $dbname = "tbf_";
 
       $conn = new mysqli($servername, $username, $password, $dbname);
+
+      if (!$conn) {
+        $errorMessage = "Connection failed: " . mysqli_connect_error();
+        exit;
+      }
 
       $message = "";
       if(isset($_POST['submit'])) {
