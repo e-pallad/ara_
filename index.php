@@ -34,7 +34,7 @@
         $version = str_pad(mysqli_real_escape_string($conn, $_POST['version']), 2, '0', STR_PAD_LEFT);
         $classification = mysqli_real_escape_string($conn, $_POST['classification']);
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
-        $sqlFileName = $project."-".$order."-".$id."-".$version."-".$classification."-".$add_text;
+        $sqlFileName = $project."-".$order."-".$version."-".$classification."-".$add_text;
 
         $insertid = "INSERT INTO ara_ (
           project,
