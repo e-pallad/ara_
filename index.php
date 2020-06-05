@@ -146,7 +146,7 @@
             };
              ?>
             </select></p><br>
-          <p>Dokumentenart: <select name="classification">
+          <p>Dokumentenart: <select name="classification" style="max-width: 408px;">
             <?php
               $classOptions = array(
                 'AA' => "AA - Verwaltungstechnische Dokumente",
