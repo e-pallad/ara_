@@ -34,7 +34,7 @@
         $version = str_pad(mysqli_real_escape_string($conn, $_POST['version']), 2, '0', STR_PAD_LEFT);
         $classification = mysqli_real_escape_string($conn, $_POST['classification']);
         $add_text = mysqli_real_escape_string($conn, $_POST['add_text']);
-        $sqlFileName = $project."-".$orderNum."-".$version."-".$classification."-".$add_text;
+        $sqlFileName = $project."-".$orderNum."-".$classification."-".$version."-".$add_text;
 
         $insertData = "INSERT INTO ara_ (
           project,
@@ -57,7 +57,7 @@
         if ($conn->connect_errno || $conn->error) {
           $errorMessage = "Irgendwas lief schief, mit folgender Fehlernummer: " . $conn->connect_errno . " " . $conn->error;
         } else {
-          $filename = $project."-".$orderNum."-".$version."-".$classification."-".$add_text;
+          $filename = $project."-".$orderNum."-".$classification."-".$version."-".$add_text;
         }
       } elseif (isset($_POST['create-csv'])) {
         $selectall = "SELECT * FROM ara_";
@@ -108,7 +108,7 @@
     ?>
     <div class="copyright" style="display: none;">
       <p>
-        Dokumententitelgenerator - v1.1.0 - Letzte Änderung: 04.06.2020
+        Dokumententitelgenerator - v1.1.1 - Letzte Änderung: 15.06.2020
       </p>
     </div>
     <div class="container">
